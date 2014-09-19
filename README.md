@@ -19,6 +19,13 @@ version is 4.3.11.
 
         git clone --recursive https://github.com/kepkin/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
+  Or download
+  ```bash
+wget https://github.com/kepkin/prezto/archive/master.zip -O prezto.zip &&
+  unzip prezto.zip && mv prezto-master .zprezto
+        
+  ```
+
   3. Create a new Zsh configuration by copying the Zsh configuration files
      provided:
 
