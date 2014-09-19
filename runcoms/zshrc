@@ -12,5 +12,8 @@ fi
 
 # Customize to your needs...
 
+# store dir stack
+DIRSTACKSIZE=30
+
 bindkey '5D' backward-word # ctrl + left
 bindkey '5C' forward-word # ctrl + right
