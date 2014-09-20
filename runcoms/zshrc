@@ -14,6 +14,14 @@ fi
 
 # store dir stack
 DIRSTACKSIZE=30
+DIRSTACKFILE=~/.zdirs
+if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+  [[ -d $dirstack[1] ]] && cd $dirstack[1] && cd $OLDPWD
+fi
+chpwd() {
+  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+}
 
 bindkey '5D' backward-word # ctrl + left
 bindkey '5C' forward-word # ctrl + right
