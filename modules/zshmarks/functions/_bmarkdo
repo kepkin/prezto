@@ -1,0 +1,59 @@
+#compdef bmarkdo
+# ------------------------------------------------------------------------------
+# Description
+# -----------
+#
+#  Completion script for tmuxinator (https://github.com/aziz/tmuxinator).
+#
+#  Source: https://gist.github.com/2242920
+#
+# ------------------------------------------------------------------------------
+# Authors
+# -------
+#
+#  * ser1zw (https://github.com/ser1zw)
+#  * Ben O'Hara (https://github.com/benohara)
+#
+# ------------------------------------------------------------------------------
+
+_bmarkdo() {
+  zmodload zsh/mapfile
+
+  local -a commands
+  commands=()
+  
+  
+  FLINES=( "${(f)mapfile[$HOME/.bookmarks]}" )
+  for ITEM in $FLINES; do
+    commands+=( "$(echo $ITEM | sed "s/\t/:/" )" )
+  done
+
+  
+  commands2=(
+    'start:start a tmux session using project'\''s tmuxinator config'
+    'open:create a new project file and open it in your editor'
+    'copy:copy source_project project file to a new project called new_project'
+    'delete:deletes the project called project_name'
+    'implode:deletes all existing projects!'
+    'list:list all existing projects'
+    'doctor:look for problems in your configuration'
+    'help:shows this help document'
+    'version:shows tmuxinator version number'
+  )
+
+  if (( CURRENT == 2 )); then
+    _describe -t commands 'commands' commands
+  fi
+
+  return 0
+}
+
+_bmarkdo
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et
