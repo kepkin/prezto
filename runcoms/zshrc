@@ -23,5 +23,7 @@ chpwd() {
   print -l $PWD ${(u)dirstack} >! $DIRSTACKFILE
 }
 
+zstyle ':completion:*' hosts off
+
 bindkey '5D' backward-word # ctrl + left
 bindkey '5C' forward-word # ctrl + right
